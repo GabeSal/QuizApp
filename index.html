@@ -17,26 +17,45 @@
   <br>
 
   <!-- questions for quiz placed here -->
+  <div class="main-container">
   <div class="container question">
-    <p>Lorem ipsum Sed incididunt pariatur sint dolore sunt consectetur cillum Duis laboris sed sunt voluptate deserunt nulla culpa elit esse pariatur nulla irure est ad dolore aute aliqua elit id velit dolore proident elit ut deserunt culpa do consectetur aliquip?</p>
   </div>
-  <br>
+  
+    <br>
 
-  <!-- multiple choice questions and true/false questions -->
-  <div class="box choices">
-    <form action="">
-      <div class="left-group">
-        <button class="buttons-left" name="choice1">Choice #1</button>
-        <button class="buttons-left" name="choice2">Choice #2</button>
+    <!-- multiple choice questions and true/false questions -->
+    <div class="box choices">
+      <form id="question1" action="">
+
+        <div class="left-group">
+        <ol class="buttons-left">
+          <!--<li class="button">answer 1</li>
+          <li class="button">answer 2</li> -->
+        </ol>
+        </div>
+
+        <div class="right-group">
+        <ol class="buttons-right">
+          <!--<li class="button">answer 3</li>
+          <li class="button">answer 4</li>-->
+        </ol>
+        </div>
+
+      </form>
+
+      <progress class="progress-bar" value="1" max="100">0%</progress>
+        <span class="progress-span">1 of 10</span>
+
+      <div class="submit-button hidden">
+        <button class="submit-btn" type="submit" name="submit">Submit</button>
       </div>
 
-      <div class="right-group">
-        <button class="buttons-right" name="choice3">Choice #3</button>
-        <button class="buttons-right" name="choice4">Choice #4</button>
-      </div>
-      
-    </form>
-  </div>
+    </div>
+
+  </div> <!-- main-container -->
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
