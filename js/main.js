@@ -6,7 +6,8 @@ $(document).ready(function() {
       {
         question: "Who is the main antagonist of the fellowship of the ring?",
         solutions: ["The Balrog", "Sauron", "Saruman", "The Witch King"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        hint: "this is a hint"
       },
       {
         question: "During the Siege of Barad-dur, whom was responsible for disposing the One Ring?",
@@ -24,13 +25,13 @@ $(document).ready(function() {
         correctAnswer: 2
       },
       {
-        question: "?",
-        solutions: ["answer 1", "answer 2", "answer 3", "answer 4"],
+        question: "How many races make up all of Middle-Earth?",
+        solutions: ["Five", "Thirteen", "Three", "Seven"],
         correctAnswer: 1
       },
       {
-        question: "6 lkfjvbfv oirsbhfbvr?",
-        solutions: ["answer 1", "answer 2", "answer 3", "answer 4"],
+        question: "Tom Bombadil is an enigma in the J.R.R. Tolkien mythology. What is he best known for?",
+        solutions: ["His blue jacket and yellow boots", "Saving Pip and Mary from Old Man Willow", "The One Ring has no effect on him", "He doesn't exist"],
         correctAnswer: 2
       },
       {
@@ -94,6 +95,18 @@ $(document).ready(function() {
 
   };
 
+  function correctAnswer() {
+    alert("Correct!");
+  }
+
+  function incorrectAnswer() {
+    alert("Incorrect!");
+  }
+
+  function youLose() {
+    alert("You lose!");
+  }
+
  
   //check the answer before moving on to the next question
   var checkAnswer = function(data, userChoice, element, health) {
@@ -103,12 +116,13 @@ $(document).ready(function() {
       if (userChoice === data[index].correctAnswer) {
         Quiz.currentQuestion++;
         Quiz.render(data, Quiz.currentQuestion, element);
-        alert("correct!");
+        correctAnswer();
       } else { //if answer is wrong, lose one health point and update progress bar
+        incorrectAnswer();
         Quiz.score--;
         if (Quiz.score <= 0) {
           setTimeout( function() {
-            alert('You lost!');
+            youLose();
             initialize();
           }, 75);
         }
@@ -117,6 +131,8 @@ $(document).ready(function() {
       }
     }
   };
+
+
 
   //Quiz object
   var Quiz = {

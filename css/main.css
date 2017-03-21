@@ -6,20 +6,35 @@
 }
 
 .overlay {
-  margin: 0;
+  top: 0;
   left: 0;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-content {
+  text-align: center;
+  position: relative;
+  background-color: white;
+  width: 40vw;
+  height: 35vh;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px
 }
 
 body {
   margin: 0 auto;
-
-  width: 1000px;
-  height: 800px;
 
   font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
 }
@@ -54,6 +69,21 @@ body {
 
   padding-left: 15px;
   padding-right: 15px;
+}
+
+/*current question*/
+.current {
+  min-height: 3em;
+}
+
+/*span showing how many questions user has answered*/
+.progress-span {
+  width: 100%;
+  left: 0;
+  top: 300px;
+  font-family: 'Eagle Lake', sans-serif;
+  font-style: italic;
+  font-size: 14px;
 }
 
 .box {
@@ -136,17 +166,6 @@ button {
 
   padding: 3px;
   width: 480px;
-}
-
-/*span showing how many questions user has answered*/
-.progress-span {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 300px;
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-size: 14px;
 }
 
 /*final buttons to submit user input data*/
