@@ -77,9 +77,11 @@ $(document).ready(function() {
     element.find(".buttons-left").html(left);
     element.find(".buttons-right").html(right);
 
-    //stores the data value of the progress bar
-    var health = $("progress").prop("value");
-    console.log(health);
+    // update score progress bar
+    element.find('.health-bar').html(
+      '<progress class="progress-bar" max="3" value="'
+      + Quiz.score
+      +'"></progress>');
 
      //clicking on a button causes an event and grabs the value to check if choice is correct
     $(".button").on("click", function(e) {
@@ -96,16 +98,22 @@ $(document).ready(function() {
   //check the answer before moving on to the next question
   var checkAnswer = function(data, userChoice, element, health) {
     var index = Quiz.currentQuestion;
-    console.log(health);
     if( index < data.length ) {
+      //if answer is correct -> create a pop up stating so 
       if (userChoice === data[index].correctAnswer) {
         Quiz.currentQuestion++;
         Quiz.render(data, Quiz.currentQuestion, element);
         alert("correct!");
-      } else {
-        health--;
-        document.getElementById("health").value = health;
-        alert("incorrect!");
+      } else { //if answer is wrong, lose one health point and update progress bar
+        Quiz.score--;
+        if (Quiz.score <= 0) {
+          setTimeout( function() {
+            alert('You lost!');
+            initialize();
+          }, 75);
+        }
+        Quiz.render(data, Quiz.currentQuestion, element);
+        //alert("incorrect here!");
       }
     }
   };
@@ -114,14 +122,15 @@ $(document).ready(function() {
   var Quiz = {
     totalQuestions: data.length,
     currentQuestion: 0,
-    score: 0,
-
+    score: 3,
     render: render,
     checkAnswer: checkAnswer
   }
 
   //initialize the app
   var initialize = function() {
+    Quiz.currentQuestion = 0;
+    Quiz.score = 3;
     Quiz.render(data, Quiz.currentQuestion, $(".main-container"));
   };
 
