@@ -68,24 +68,18 @@ $(document).ready(function() {
 
   //renders the questions and choices as well as the correct solution
   var render = function(data, index, element) {
-    var left = '';
-    var right = '';
+    var list = '';
     currentQuestion = Quiz.currentQuestion + 1;
 
     element.find('.container').html('<p class="current">' + data[index].question + '</p>' + '<br>' +'<span class="progress-span">' + currentQuestion + ' of 10</span>');
 
-    var counter = 0;
-    data[index].solutions.forEach(function(e) {
-      if (counter <= 1) {
-        left += '<button class="button" data-choice="' + counter + '">' + e + '</button>';
-      } else {
-        right += '<button class="button" data-choice="' + counter + '">' + e + '</button>';
-      }
+    var counter = 1;
+    for(var i = 0; i < 4; i++) {
+      list += '<button class="button" data-choice="' + i + '">' + counter + ". " + data[index].solutions[i] + '</button>' + '<div class="clear-fix"></div>';
       counter++;
-    });
+    }
 
-    element.find(".buttons-left").html(left);
-    element.find(".buttons-right").html(right);
+    element.find(".buttons-group").html(list);
 
      //clicking on a button causes an event and grabs the value to check if choice is correct
     $(".button").on("click", function(e) {
