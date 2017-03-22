@@ -5,14 +5,26 @@
   padding-top: 5px;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.clear-fix {
+  height: 1px;
+  clear: both;
+}
+
 .overlay {
   top: 0;
   left: 0;
   position: fixed;
   width: 100vw;
   height: 100vh;
+
   background: rgba(0, 0, 0, 0.85);
   opacity: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,22 +33,40 @@
 .overlay-content {
   text-align: center;
   position: relative;
+
   background-color: white;
+  border-radius: 5px;
   width: 40vw;
   height: 35vh;
+
+  line-height: 3em;
 }
 
 .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+
+  /*styles*/
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  width: 1.75em;
+  height: 1.75em;
 }
 
 body {
   margin: 0 auto;
 
   font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
+}
+
+footer {
+  height: 2em;
+  width: 100%;
 }
 
 /*title styles*/
@@ -54,9 +84,7 @@ body {
 
   display: block;
   width: 600px;
-  height: 200px;
-  border: solid black 1px;
-  border-radius: 10px;
+  border: solid black 2px;
   text-align: center;
 
   background-color: #ccc;
@@ -78,75 +106,70 @@ body {
 
 /*span showing how many questions user has answered*/
 .progress-span {
+  display: inline-block;
   width: 100%;
   left: 0;
-  top: 300px;
   font-family: 'Eagle Lake', sans-serif;
   font-style: italic;
   font-size: 14px;
+  margin-bottom: 2em;
 }
 
 .box {
   display: block;
+  padding: 25px;
 
   margin: 0 auto;
   width: 600px;
-  height: 275px;
-  border: solid #555 1px;
-  border-radius: 10px;
+  min-height: 300px;
+  border: solid #555 2px;
 
   background-color: #aaa;
 }
 
-/*div holding the multiple choice buttons*/
-.choices {
-  padding-top: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
 button {
   cursor: pointer;
-  border: solid #909090 2px;
+  /*border: solid #909090 2px;
   border-radius: 15px;
   color: #F6F6F6;
 
-  background-color: #5D5454;
+  background-color: #5D5454;*/
+}
+
+button:focus {
+  outline: none;
 }
 
 /*grouping the first two buttons to the left side*/
 .left-group {
-  display: inline-block;
   float: left;
   width: 200px;
-  height: 300px;
+  /*height: 300px;*/
   margin-left: 10px;
 }
 
 /*grouping last two buttons for the right side*/
 .right-group {
-  display: inline-block;
   float: right;
   width: 200px;
-  height: 300px;
+  /*height: 300px;*/
   margin-right: 30px;
 }
 
 .buttons-left {
   font-size: 16px;
-
   list-style-type: none;
 }
 
 /*buttons*/
 .button {
   cursor: pointer;
-  border: solid #909090 2px;
-  border-radius: 15px;
+  border: none;
+  /*border-radius: 12px;*/
   color: #F6F6F6;
   font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
 
-  background-color: #5D5454;
+  background-color: transparent;
   padding: 5px;
   margin-bottom: 25px;
   width: 200px;
@@ -154,39 +177,52 @@ button {
 
 .buttons-right {
   font-size: 16px;
-
   list-style-type: none;
 }
 
 /*progress bar to show how many answers are correct*/
-.progress-bar {
-  display: block;
-  margin: 0 auto;
-  margin-top: 190px;
+.health-tag {
 
-  padding: 3px;
-  width: 480px;
-}
-
-/*final buttons to submit user input data*/
-.submit-button {
-  position: relative;
-  display: inline-block;
-
-  float: right;
-  bottom: 30px;
-}
-
-.submit-btn {
   font-size: 16px;
   font-weight: bold;
-  font-family: 'Roboto', 'Times New Roman', sans-serif;
+  text-align: center;
+}
 
-  padding: 5px;
-  width: 100px;
+/*styling for the progress bar*/
+progress[value] {
+  -webkit-appearance: none;
+    -moz-appearance: none;
+        appearance: none;
+
+  border: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #F52319;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #38E759;
+  border-radius: 2px;
+}
+
+.progress-bar {
+  margin: 0;
+  width: 480px;
+  height: 1.5em;
 }
 
 /*hides any divs that aren't shown on screen*/
 .hidden {
   display: none;
+}
+
+/*highlights correct answer*/
+.highlight {
+  color: white;
+  border-color: #DDD;
+  background-color: #005C23;
+  box-shadow: 0 0 25px #00A93F;
 }
