@@ -17,51 +17,51 @@ $(document).ready(function() {
       },
       {
         question: "Who, or what, were the Ringwraiths?",
-        solutions: ["Dark elves that sought revenge", "Guardians of Rivendell", "9 kings of men corrupted by Sauron", "Bandits that had a fascination for rings"],
-        correctAnswer: 2,
-        hint: ""
+        solutions: ["9 kings of men corrupted by Sauron", "Dark elves that sought revenge", "Guardians of Rivendell", "Bandits that had a fascination for rings"],
+        correctAnswer: 0,
+        hint: "They were born of noble blood and bent to the will of the Dark Lord"
       },
       {
         question: "In the Third Age, the Ring of Power remained untouched until ________ found it.",
         solutions: ["Deagol", "Bilbo Baggins", "Smeagol", "Frodo"],
         correctAnswer: 2,
-        hint: ""
+        hint: "My precious!"
       },
       {
         question: "How many races make up all of Middle-Earth?",
-        solutions: ["Five", "Thirteen", "Three", "Seven"],
+        solutions: ["Eleven", "Twenty-six", "Three", "Thirteen"],
         correctAnswer: 1,
-        hint: ""
+        hint: "Although the leading races include humans, elves, and dwarves there are many more sentient beings as well"
       },
       {
         question: "Tom Bombadil is an enigma in the J.R.R. Tolkien mythology. What is he best known for?",
-        solutions: ["His blue jacket and yellow boots", "Saving Pip and Mary from Old Man Willow", "The One Ring has no effect on him", "He doesn't exist"],
-        correctAnswer: 2,
-        hint: ""
+        solutions: ["His blue jacket and yellow boots", "Saving Pip and Mary from Old Man Willow", "He doesn't exist", "The One Ring has no effect on him"],
+        correctAnswer: 3,
+        hint: "His abilities stretch beyond any human or elf"
       },
       {
         question: "In the coming of the Second Age of Middle-Earth, twenty magical rings were crafted for the leaders of Middle-Earth to do what?",
         solutions: ["Corrupt Middle-Earths rulers", "Bring peace and prosperity", "Unite all Kingdoms", "Feed their Egos"],
         correctAnswer: 0,
-        hint: ""
+        hint: "One was crafted in the fires of Mordor after the creation of the previous rings"
       },
       {
         question: "What is the true purpose of the Master Ring?",
-        solutions: ["Make the user invisible", "Dominate the will of others", "Keep Sauron alive", "Augment the power of its user"],
-        correctAnswer: 3,
-        hint: ""
+        solutions: ["Make the user invisible", "Augment the power of its user", "Dominate the will of others", "Keep Sauron alive"],
+        correctAnswer: 1,
+        hint: "Only mortals experience negative side effects from the ring, however in the right hands, its power ensured victory"
       },
       {
         question: "Bilbo Baggins may arguably be the most important character to this series for this reason. Why?",
         solutions: ["He helped the dwarves, which brought about peace", "He wrote about his adventures and inspired Frodo", "He didn't kill Gollum, which led to Gollum destroying the ring", "He met Gandalf and provided him with friendship"],
         correctAnswer: 2,
-        hint: ""
+        hint: "At the end of the Return of the King, Frodo reached Mount Doom..."
       },
       {
         question: "How many people wore the Ring of Power?",
         solutions: ["Nine", "Five", "Four", "Seven"],
         correctAnswer: 0,
-        hint: ""
+        hint: "Many are not known in the films but in the Silmarillion, all known bearers are specified"
       }
 
   ];
@@ -104,9 +104,13 @@ $(document).ready(function() {
 
   function correctAnswer(data, element) {
     Quiz.currentQuestion++;
-    setTimeout( function() {
-      Quiz.render(data, Quiz.currentQuestion, element);
-    }, 1000);
+    if (Quiz.currentQuestion < data.length) {
+      setTimeout( function() {
+        Quiz.render(data, Quiz.currentQuestion, element);
+      }, 700);
+    } else if (Quiz.currentQuestion === data.length) {
+      gameOver();
+    }
   }
 
   function incorrectAnswer() {
@@ -119,12 +123,24 @@ $(document).ready(function() {
     } else if (Quiz.score === 0) {
       setTimeout( function() {
         youLose();
-      }, 75);
+      }, 600);
     }
   }
 
+  // you lose
   function youLose() {
-    initialize();
+    $(document).find(".main-container").addClass('hidden');
+    $(document).find(".start-menu").removeClass('hidden');
+    $(".start-menu-title").text("Game Over");
+    $(".start-quiz").text("Reset");
+  }
+
+  // you win
+  function gameOver() {
+    $(document).find(".main-container").addClass('hidden');
+    $(document).find(".start-menu").removeClass('hidden');
+    $(".start-menu-title").text("You Win!");
+    $(".start-quiz").text("Reset");
   }
 
  
@@ -148,7 +164,7 @@ $(document).ready(function() {
     }
   };
 
-  //Quiz object
+    //Quiz object
   var Quiz = {
     totalQuestions: data.length,
     currentQuestion: 0,
@@ -170,6 +186,12 @@ $(document).ready(function() {
       +'"></progress>');
   };
 
-  initialize();
+  $(".start-quiz").on("click", function(event) {
+    setTimeout( function() {
+      $(document).find(".main-container").removeClass('hidden');
+      $(document).find(".start-menu").addClass('hidden');
+      initialize();
+    }, 75);
+  });
 
 });

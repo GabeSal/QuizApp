@@ -15,6 +15,43 @@ p {
   clear: both;
 }
 
+.start-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-menu-title {
+  color: #F2CC2E;
+  font-size: 36px;
+  margin-bottom: 35%;
+}
+
+.start-quiz {
+  position: absolute;
+  margin: 0 auto;
+  cursor: pointer;
+
+  border-color: #F2CC2E;
+  border-style: groove;
+  border-width: 5px;
+  padding-right: 0.65%;
+  padding-left: 0.65%;
+  background-color: transparent;
+
+  color: #F2CC2E;
+  font-size: 22px;
+  font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
+}
+
+/*overlay used for the hint screen*/
 .overlay {
   top: 0;
   left: 0;
@@ -42,6 +79,10 @@ p {
   line-height: 3em;
 }
 
+.overlay-content p {
+  margin-top: 5%;
+}
+
 .close-button {
   position: absolute;
   top: 0;
@@ -60,6 +101,7 @@ p {
 
 body {
   margin: 0 auto;
+  background-color: ;
 
   font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
 }
@@ -72,10 +114,17 @@ footer {
 /*title styles*/
 .title-box {
   display: block;
+  color: #F2CC2E;
+  font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
+
 }
 
 .title {
   text-align: center;
+}
+
+h1 {
+  text-shadow: 1.5px 1px 0px #A98C14;
 }
 
 /*container holding the form and other interactive divs*/
@@ -110,10 +159,10 @@ footer {
   display: inline-block;
   width: 100%;
   left: 0;
-  font-family: 'Eagle Lake', sans-serif;
+  font-family: 'Pirata One', cursive;
   font-style: italic;
-  font-size: 14px;
-  margin-bottom: 2em;
+  font-size: 18px;
+  margin-bottom: 1em;
 }
 
 .box {
@@ -146,11 +195,12 @@ button:focus {
 .button {
   cursor: pointer;
   border: none;
-  color: #F6F6F6;
+  color: black;
+  font-size: 14px;
   font-family: 'Eagle Lake', 'Times New Roman', sans-serif;
 
   background-color: transparent;
-  padding: 2%;
+  padding: 1.5%;
   max-width: 100%;
 }
 
